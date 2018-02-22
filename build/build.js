@@ -6,6 +6,7 @@ process.env.NODE_ENV = 'production'
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
+const shell = require('shelljs');
 const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
@@ -14,8 +15,13 @@ const webpackConfig = require('./webpack.prod.conf')
 const spinner = ora('building for production...')
 spinner.start()
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
-  if (err) throw err
+var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory);
+shell.rm('-rf', assetsPath);
+shell.mkdir('-p', assetsPath);
+shell.config.silent = true;
+shell.cp('-R', 'static/*', assetsPath);
+shell.config.silent = false;
+
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
     if (err) throw err
@@ -38,4 +44,3 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       '  Opening index.html over file:// won\'t work.\n'
     ))
   })
-})
