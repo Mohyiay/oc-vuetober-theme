@@ -1,19 +1,19 @@
 .DS_Store
-node_modules/
-/pages
 /assets
+/node_modules
+/pages
+/test/e2e/reports/
+/test/unit/coverage/
 npm-debug.log*
+selenium-debug.log
 yarn-debug.log*
 yarn-error.log*
-/test/unit/coverage/
-/test/e2e/reports/
-selenium-debug.log
 
 # Editor directories and files
+*.njsproj
+*.ntvs*
+*.sln
+*.suo
 .env
 .idea
 .vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
