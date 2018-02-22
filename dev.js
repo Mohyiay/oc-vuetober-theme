@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-// step 1: clean up the dom
+// remove absolutely everything from the dom
 document.body.textContent = '';
 
-// step 2: 
 // fetch our real entry point and inject contents into dom
 axios.get('/__october__').then((response) => {
     const october = document.createElement('html');
@@ -21,5 +20,6 @@ axios.get('/__october__').then((response) => {
         }
     });
     
+    // launch our application
     require('./src/main');
 });

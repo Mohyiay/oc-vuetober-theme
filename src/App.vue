@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <h1 class="bg-red hover:bg-green px-6 py-4">hello world</h1>
+    <h1>hello world</h1>
+    <Foo />
   </div>
 </template>
 
 <script>
+import Foo from './foo';
+
 export default {
+  components: { Foo },
   name: 'App',
 };
 </script>
