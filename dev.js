@@ -1,12 +1,10 @@
-/* eslint-disable */
 import axios from 'axios';
-
-console.log(document.body.outerHTML);
 
 // step 1: clean up the dom
 document.body.textContent = '';
 
-// step 2: fetch our entry point
+// step 2: 
+// fetch our real entry point and inject contents into dom
 axios.get('/__october__').then((response) => {
     const october = document.createElement('html');
     october.innerHTML = response.data;
@@ -23,5 +21,5 @@ axios.get('/__october__').then((response) => {
         }
     });
     
-    require('./main');
+    require('./src/main');
 });

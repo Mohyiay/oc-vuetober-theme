@@ -15,7 +15,11 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   entry: {
-    app: './src/dev.js'
+    app: [
+      'babel-polyfill',
+      'event-source-polyfill', 
+      './dev.js'
+    ],
   },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
