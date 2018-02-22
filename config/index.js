@@ -2,6 +2,8 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
+require('dotenv').config()
+
 const path = require('path')
 
 module.exports = {
@@ -12,10 +14,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/__october__': {
-        target: 'http://givingteam.test',
+        target: process.env.OCTOBER_HOST || 'http://localhost',
         changeOrigin: true,
         pathRewrite: {
-          '^/__october__': 'http://givingteam.test'
+          '^/__october__': process.env.OCTOBER_HOST || 'http://localhost',
         }
       }
     },
