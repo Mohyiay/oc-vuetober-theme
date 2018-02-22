@@ -1,10 +1,12 @@
-<!-- htmlmin:ignore -->title = "Index"
+<!-- htmlmin:ignore -->title = "__vuetober__"
 url = "/:all?*"
 is_hidden = 0
 ==
 function onStart()
 {
-    $this['token'] = \Session::token();
+    $this['initialData'] = json_encode([
+        'token' => \Session::token(),
+    ]);
 }
 ==
 <!-- htmlmin:ignore -->
@@ -13,7 +15,7 @@ function onStart()
     <head>
         <!-- Meta -->
         <meta charset="utf-8">
-        <meta name="token" content="{{ token }}">
+        <meta id="vuetober" name="vuetober" content="{{ initialData }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Resources -->
