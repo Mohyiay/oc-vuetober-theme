@@ -14,16 +14,16 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/__october__': {
-        target: process.env.OCTOBER_HOST || 'http://localhost',
+        target: process.env.OCTOBER_HOST || 'localhost',
         changeOrigin: true,
         pathRewrite: {
-          '^/__october__': process.env.OCTOBER_HOST || 'http://localhost',
+          '^/__october__': process.env.OCTOBER_HOST || 'localhost',
         }
       }
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: process.env.OCTOBER_HOST || 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
