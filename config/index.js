@@ -4,7 +4,8 @@
 
 require('dotenv').config()
 
-const path = require('path')
+const path = require('path');
+const host = process.env.VUETOBER_URL || 'localhost';
 
 module.exports = {
   dev: {
@@ -13,17 +14,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/__october__': {
-        target: process.env.OCTOBER_HOST || 'localhost',
-        changeOrigin: true,
+      "/__october__": {
+        target: host,
+        changeOrigin: true, 
         pathRewrite: {
-          '^/__october__': process.env.OCTOBER_HOST || 'localhost',
+          '^/__october__': host,
         }
-      }
+      },
     },
 
     // Various Dev Server settings
-    host: process.env.OCTOBER_HOST || 'localhost', // can be overwritten by process.env.HOST
+    host: process.env.VUETOBER_HOST || 'localhost',
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
