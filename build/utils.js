@@ -98,7 +98,7 @@ exports.createNotifierCallback = () => {
         const filename = error.file && error.file.split('!').pop();
 
         notifier.notify({
-            icon: path.join(__dirname, 'logo.png'),
+            icon: path.join(__dirname, 'notification_icon.png'),
             message: severity + ': ' + error.name,
             subtitle: filename || '',
             title: packageConfig.name,
