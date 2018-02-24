@@ -3,48 +3,63 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'babel-eslint'
+      parser: 'babel-eslint',
   },
   env: {
       browser: true,
   },
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential', 'airbnb-base'],
-  // required to lint *.vue files
-  plugins: [
-    'vue'
+  extends: [
+      'plugin:vue/essential', 
+      'airbnb-base',
   ],
-  // check if imports actually resolve
+  plugins: [
+      'vue',
+  ],
   settings: {
-    'import/resolver': {
-      webpack: {
-        config: 'build/webpack.base.conf.js'
-      }
-    },
+      'import/resolver': {
+          webpack: {
+              config: 'build/webpack.base.conf.js',
+          },
+      },
   },
-  // add your custom rules here
   rules: {
-    // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      vue: 'never'
-    }],
-    // disallow reassignment of function parameters
-    // disallow parameter object manipulation except for specific exclusions
-    'no-param-reassign': ['error', {
-      props: true,
-      ignorePropertyModificationsFor: [
-        'state', // for vuex state
-        'acc', // for reduce accumulators
-        'e' // for e.returnvalue
-      ]
-    }],
-    // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      optionalDependencies: ['test/unit/index.js']
-    }],
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  }
+      // allow annonymous functions
+      'func-names': 0,
+      
+      // don't require .vue extension when importing
+      'import/extensions': 0,
+
+      // don't enforce an absolute/relative import order
+      'import/first': 0,
+
+      // allow modules to have a single named export
+      'import/prefer-default-export': 0,
+
+      // allow optionalDependencies
+      'import/no-extraneous-dependencies': ['error', {
+          optionalDependencies: [
+              'test/unit/index.js',
+          ],
+      }],
+
+      // indentation style
+      'indent': ['error', 4],
+
+      // allow console logs, they'll get removed by the minifier anyway
+      'no-console': 0,
+
+      // only allow debugger in development
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+      // disallow reassignment of function parameters
+      // disallow parameter object manipulation except for specific exclusions
+      'no-param-reassign': ['error', {
+          ignorePropertyModificationsFor: [
+              'acc', // for reduce accumulators
+              'e', // for e.returnvalue
+              'state', // for vuex state
+          ],
+          props: true,
+      }],
+  },
 }

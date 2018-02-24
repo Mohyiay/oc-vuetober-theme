@@ -93,7 +93,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@': resolve('src'),
+            'src': resolve('src'),
         },
         extensions: ['.js', '.vue', '.json'],
     },

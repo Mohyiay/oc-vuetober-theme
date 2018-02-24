@@ -1,12 +1,20 @@
 import Vue from 'vue';
-import App from './App';
-import router from './router';
+import VueRouter from 'vue-router';
+import rootComponent from './root';
+import routes from 'src/app/routes';
 
-Vue.config.productionTip = false;
+// bootstrap our application
+import './app/boot';
+
+// instantiate a router
+const router = new VueRouter({
+    mode: 'history',
+    routes,
+});
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(App),
+    el: '#app',
+    render: h => h(rootComponent),
+    router,
 });
