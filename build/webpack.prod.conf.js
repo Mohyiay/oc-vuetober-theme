@@ -44,7 +44,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             uglifyOptions: {
                 compress: {
                     warnings: false
-                }
+                },
             },
         }),
 
@@ -59,9 +59,14 @@ const webpackConfig = merge(baseWebpackConfig, {
             filename: utils.assetsPath('css/[name].[contenthash].css'),
         }),
 
-        // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
-        // for more information about purgecss.
+        // Purge unused css
+        // https://github.com/FullHuman/purgecss
         new PurgecssPlugin({
+            extractors: [
+                {
+                    extensions: ['vue', 'htm', 'js'],
+                }
+            ],
             paths: glob.sync([
                 path.join(__dirname, './../src/index.html'),
                 path.join(__dirname, './../**/*.vue'),
@@ -91,6 +96,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             minify: {
                 // https://github.com/kangax/html-minifier#options-quick-reference
                 collapseWhitespace: true,
+                conservativeCollapse: true,
                 removeAttributeQuotes: true,
                 removeComments: true,
             },
