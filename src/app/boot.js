@@ -1,14 +1,20 @@
 import Vue from 'vue';
 
-// register plugins
+//
+// plugins
+//
 import './plugins/router';
 
-// register global components
+//
+// global components
+//
 import globalComponents from 'src/components/global';
 
 Object.keys(globalComponents).forEach((name) => {
     Vue.component(name, globalComponents[name]);
 });
 
-// disable the production tip
+//
+// config
+//
 Vue.config.productionTip = false;

@@ -30,21 +30,20 @@ import { bindAll } from 'spyfu-vue-functional';
 export default {
     render(h, context) {
         const bindings = bindAll(context);
-        const { href, to } = context.props;
 
         // determine the button's tag name
         let TagName = 'button';
 
-        if (to) {
+        if (context.props.to) {
             TagName = 'router-link';
-        } else if (href) {
+        } else if (context.props.href) {
             TagName = 'a';
         }
 
         return <TagName
             class="v-button"
-            href={href}
-            to={to}
+            href={context.props.href}
+            to={context.props.to}
             {...bindings}>
             {context.slots().default}
         </TagName>;

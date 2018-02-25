@@ -8,9 +8,9 @@
 </style>
 
 <template>
-    <div class="videos-page">
-        <div>
-            <h1>Getting started videos</h1>
-        </div>
+  <div class="videos-page">
+    <div>
+      <h1>Getting started videos</h1>
     </div>
+  </div>
 </template>
