@@ -3,6 +3,9 @@ import Vue from 'vue';
 
 import './helpers';
 
+// boot up our application
+import 'src/app/boot';
+
 // turn off hints, we know what we're doing
 Vue.config.devtools = false;
 Vue.config.productionTip = false;

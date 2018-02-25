@@ -23,6 +23,9 @@ module.exports = {
         // mocha doesn't recommend arrow functions, this auto-fixes them
         'mocha/no-mocha-arrows': 'error',
 
+        // allow unused expressions
+        'no-unused-expressions': 0,
+
         // allow unused variables
         'no-unused-vars': 0,
 
