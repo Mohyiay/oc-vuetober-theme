@@ -63,7 +63,12 @@ exports.cssLoaders = function (options) {
         less: generateLoaders('less'),
         postcss: generateLoaders(),
         sass: generateLoaders('sass', { indentedSyntax: true }),
-        scss: generateLoaders('sass'),
+        scss: generateLoaders('sass').concat({
+            loader: 'sass-resources-loader',
+            options: {
+                resources: path.resolve(__dirname, '../scss/boot.scss'),
+            },
+        }),
         styl: generateLoaders('stylus'),
         stylus: generateLoaders('stylus'),
     };

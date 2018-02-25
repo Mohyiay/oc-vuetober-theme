@@ -1,4 +1,6 @@
-// this is the global entry point to your css
+// this is our global css configuration. anything added
+// here will be included from the root vue instance.
 
 // elements
 @import './elements/containers';
+@import './elements/headers';

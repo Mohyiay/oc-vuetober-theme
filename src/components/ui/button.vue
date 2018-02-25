@@ -1,8 +1,6 @@
 <style lang="scss" scoped>
-    $color: #2196f3;
-
     .v-button {
-        background-color: $color;
+        background-color: $blue;
         border-radius: 3px;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
         color: #fefefe;
@@ -13,7 +11,7 @@
         transition: all 150ms ease;
 
         &:hover {
-            background-color: darken($color, 5%);
+            background-color: darken($blue, 5%);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12),  0 2px 4px 0 rgba(0, 0, 0, 0.08);
             color: #fff;
             transform: translateY(-1px);
