@@ -7,11 +7,6 @@
         text-align: center;
     }
 
-    h1,
-    h2 {
-        font-weight: 300;
-    }
-
     nav {
         display: flex;
         flex-wrap: wrap;
