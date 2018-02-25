@@ -1,10 +1,14 @@
 <style lang="scss" scoped>
     .v-button {
+        appearance: none;
         background-color: $blue;
         border-radius: 3px;
+        border: none;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
         color: #fefefe;
+        cursor: pointer;
         display: inline-block;
+        outline: 0;
         padding: 12px 20px;
         text-decoration: none;
         transform: translateY(0);

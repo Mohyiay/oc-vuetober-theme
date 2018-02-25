@@ -1,6 +1,9 @@
 // this is our global css configuration. anything added
 // here will be included from the root vue instance.
 
+// normalize browser
+@import 'normalize.css';
+
 // elements
 @import './elements/containers';
 @import './elements/headers';
