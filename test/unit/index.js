@@ -27,7 +27,6 @@ testsContext.keys().forEach(testsContext);
 
 // files to ignore from code coverage
 const blacklist = [
-    './app/boot.js',
     './index.htm',
     './main.js',
 ];

@@ -1,3 +1,6 @@
+import axios from 'axios';
+import modules from 'src/app/store/modules';
+
 // click an element
 window.click = function (el) {
     el.click();
@@ -5,7 +8,10 @@ window.click = function (el) {
 
 // component factory
 /* eslint-disable-next-line */
-window.factory = (opts = {}) => require('spyfu-vue-factory').factory(opts);
+window.factory = (opts = {}) => require('spyfu-vue-factory').factory({
+    modules,
+    ...opts,
+});
 
 // mount vue components that don't require any config
 // this will usually be overwritten in spec files
@@ -20,4 +26,15 @@ window.simulate = function (name, el, setupFn) {
     }
 
     return el.dispatchEvent(e);
+};
+
+// stub xhr requests
+window.stubRequests = function (requests = {}) {
+    Object.keys(requests).forEach((method) => {
+        if (axios[method]) {
+            Object.entries(requests[method] || {}).forEach(([endpoint, fixture]) => {
+                axios[method].withArgs(endpoint).resolves({ data: fixture() });
+            });
+        }
+    });
 };

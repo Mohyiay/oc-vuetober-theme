@@ -4,6 +4,7 @@ import Vue from 'vue';
 // plugins
 //
 import './plugins/router';
+import './plugins/vuex';
 
 //
 // global components
