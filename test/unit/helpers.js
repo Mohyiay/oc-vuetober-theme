@@ -3,7 +3,11 @@ import modules from 'src/app/store/modules';
 
 // click an element
 window.click = function (el) {
-    el.click();
+    if (typeof el.click === 'function') {
+        el.click();
+    } else {
+        simulate('click', el);
+    }
 };
 
 // component factory

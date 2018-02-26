@@ -1,4 +1,4 @@
-var webpackConfig = require('../../build/webpack.test.conf')
+let webpackConfig = require('../../build/webpack.test.conf');
 
 module.exports = function (config) {
     config.set({
@@ -27,4 +27,4 @@ module.exports = function (config) {
             ],
         },
     });
-}
+};

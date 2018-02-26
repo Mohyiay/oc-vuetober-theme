@@ -24,7 +24,7 @@ const store = new Vuex.Store({
     strict: !isProduction,
 });
 
-// configure axios and initialize our store
+// process initial data in meta tags
 const metaData = document.querySelector('meta[name=vuetober]');
 
 if (metaData) {
@@ -45,12 +45,14 @@ if (metaData) {
         return config;
     });
 
+    // inject initial state into the store
     initialize(store, data);
 }
 
 // sync the store with our router
 sync(store, router);
 
+// mount our root component to the dom
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

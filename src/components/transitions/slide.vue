@@ -22,7 +22,7 @@
 </style>
 
 <template>
-  <transition name="v-slide" mode="out-in">
-    <slot />
-  </transition>
+    <transition name="v-slide" mode="out-in">
+        <slot />
+    </transition>
 </template>
