@@ -11,5 +11,7 @@ dependencies:
     - ~/.cache/yarn
 
 test:
+  pre:
+    - npm rebuild node-sass --force
   override:
     - yarn test
