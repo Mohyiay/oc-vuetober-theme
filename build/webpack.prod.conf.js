@@ -1,10 +1,9 @@
-'use strict'
+
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.conf');
 const config = require('../config');
@@ -25,7 +24,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             extract: true,
             sourceMap: config.build.productionSourceMap,
             usePostCSS: true,
-        })
+        }),
     },
     output: {
         chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
@@ -35,7 +34,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
-          'process.env': env
+            'process.env': env,
         }),
 
         new UglifyJsPlugin({
@@ -43,7 +42,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             sourceMap: config.build.productionSourceMap,
             uglifyOptions: {
                 compress: {
-                    warnings: false
+                    warnings: false,
                 },
             },
         }),
@@ -52,30 +51,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         new ExtractTextPlugin({
             // Setting the following option to `false` will not extract CSS from codesplit chunks.
             // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-            // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+            // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
             // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
             // when true all css will be extracted to one file
             allChunks: true,
             filename: utils.assetsPath('css/[name].[contenthash].css'),
-        }),
-
-        // Purge unused css
-        // https://github.com/FullHuman/purgecss
-        new PurgecssPlugin({
-            extractors: [
-                {
-                    extensions: ['vue', 'htm', 'js'],
-                }
-            ],
-            paths: glob.sync([
-                path.join(__dirname, './../src/index.html'),
-                path.join(__dirname, './../**/*.vue'),
-                path.join(__dirname, './../src/**/*.js')
-            ]),
-            whitelist: [
-                'html', 
-                'body',
-            ],
         }),
 
         // Compress extracted CSS. We are using this plugin so that possible
@@ -83,7 +63,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         new OptimizeCSSPlugin({
             cssProcessorOptions: config.build.productionSourceMap
                 ? { safe: true, map: { inline: false } }
-                : { safe: true }
+                : { safe: true },
         }),
 
         // generate dist index.html with correct asset hash for caching.
@@ -112,7 +92,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         // split vendor js into its own file
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks (module) {
+            minChunks(module) {
                 // any required modules inside node_modules are extracted to vendor
                 return module.resource &&
                     /\.js$/.test(module.resource) &&
@@ -140,9 +120,9 @@ const webpackConfig = merge(baseWebpackConfig, {
         // copy custom static assets
         new CopyWebpackPlugin([
             {
-              from: path.resolve(__dirname, '../static'),
-              ignore: ['.*'],
-              to: config.build.assetsSubDirectory,
+                from: path.resolve(__dirname, '../static'),
+                ignore: ['.*'],
+                to: config.build.assetsSubDirectory,
             },
         ]),
     ],
@@ -156,9 +136,9 @@ if (config.build.productionGzip) {
             algorithm: 'gzip',
             asset: '[path].gz[query]',
             minRatio: 0.8,
-            test: new RegExp('\\.(' + config.build.productionGzipExtensions.join('|') + ')$'),
+            test: new RegExp(`\\.(${config.build.productionGzipExtensions.join('|')})$`),
             threshold: 10240,
-        })
+        }),
     );
 }
 

@@ -1,4 +1,4 @@
-'use strict'
+
 
 const baseWebpackConfig = require('./webpack.base.conf');
 const merge = require('webpack-merge');
@@ -14,23 +14,23 @@ const webpackConfig = merge(baseWebpackConfig, {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': require('../config/test.env')
+            'process.env': require('../config/test.env'),
         }),
     ],
     resolve: {
         alias: {
             // global axios mock
-            'axios$': path.resolve(__dirname, '../test/unit/mocks/axios.js'),
-            
+            axios$: path.resolve(__dirname, '../test/unit/mocks/axios.js'),
+
             // allow inline templates in our test environment
-            'vue$': 'vue/dist/vue.common.js',
+            vue$: 'vue/dist/vue.common.js',
         },
     },
     resolveLoader: {
         alias: {
             // necessary to to make lang="scss" work in test when using vue-loader's ?inject option
             // see discussion at https://github.com/vuejs/vue-loader/issues/724
-            'scss-loader': 'sass-loader'
+            'scss-loader': 'sass-loader',
         },
     },
 });
