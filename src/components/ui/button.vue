@@ -24,7 +24,6 @@
 </style>
 
 <script>
-/* eslint-disable no-unused-vars */
 import { bindAll } from 'spyfu-vue-functional';
 
 export default {
@@ -33,12 +32,8 @@ export default {
 
         // determine the button's tag name
         let TagName = 'button';
-
-        if (context.props.to) {
-            TagName = 'router-link';
-        } else if (context.props.href) {
-            TagName = 'a';
-        }
+        if (context.props.to) TagName = 'router-link';
+        else if (context.props.href) TagName = 'a';
 
         return <TagName
             class="v-button"
