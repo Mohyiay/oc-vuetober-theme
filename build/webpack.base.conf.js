@@ -95,6 +95,7 @@ module.exports = {
     resolve: {
         alias: {
             'src': resolve('src'),
+            'test': resolve('test'),
         },
         extensions: ['.js', '.vue', '.json'],
     },
