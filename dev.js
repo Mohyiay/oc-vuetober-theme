@@ -22,4 +22,8 @@ axios.get('/__october__').then((response) => {
     
     // launch our application
     require('./src/main');
+}).catch(err => {
+    // if anything went wrong, replace the entire document
+    document.write(err.response.data);
+    document.close();
 });
